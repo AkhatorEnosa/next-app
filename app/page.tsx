@@ -1,12 +1,19 @@
-async function getPosts() {
-  const items = [
-    {
-      title: "Understanding React Hooks",
-      content: "A deep dive into React Hooks and how they can simplify your component logic.",
-    }
-  ]
+import { prisma } from "./utils/db";
 
-  return items;
+async function getPosts() {
+  const data = await prisma.BlogPost.findMany({
+    select: {
+      title: true,
+      content: true,
+      imageUrl: true,
+      authorImage: true,
+      authorName: true,
+      id: true,
+      createdAt: true,
+    }
+  })
+
+  return data;
 }
 
 export default async function Home() {
@@ -17,11 +24,8 @@ export default async function Home() {
       <h1 className="text-3xl font-bold tracking-tight mb-6">Latest Posts</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((post, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-            <p className="text-gray-700">{post.content}</p>
-          </div>
+        {data.map((post) => (
+          <h1 key={post.id}>{post.title}</h1>
         ))}
       </div>
     </div>
