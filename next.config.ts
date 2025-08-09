@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
     domains: [
       'lh3.googleusercontent.com',
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'knutsoncasey.com',
+        port: '',
+      },
+
+    ],
   },
 };
 
