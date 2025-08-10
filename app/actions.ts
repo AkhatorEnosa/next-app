@@ -11,6 +11,12 @@ export async function handleSubmit(FormData: FormData) {
     const { getUser } = await getKindeServerSession();
     const user = await getUser();
 
+    // Check if user is authenticated
+    if (!user) {
+        // If not authenticated, redirect to the login page
+        return redirect("api/auth/login");
+    }
+
   // Extract data from the FormData object
     const title = FormData.get("title") as string;
     const content = FormData.get("content") as string;
@@ -22,9 +28,9 @@ export async function handleSubmit(FormData: FormData) {
       title: title,
       content: content,
       imageUrl: url,
-        authorId: user?.id,
-        authorName: `${user?.given_name} ${user?.family_name}`,
-        authorImage: user?.picture || "",
+        authorId: user.id,
+        authorName: `${user.given_name} ${user.family_name}`,
+        authorImage: user.picture || "",
     },
   });
 

@@ -1,5 +1,5 @@
 import { handleSubmit } from '@/app/actions'
-import { Button } from '@/components/ui/button'
+import SubmitButton from '@/components/general/SubmitButton'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -32,9 +32,7 @@ const CreatePostRoute = () => {
                 <Input name="url" required type="url" placeholder="Image url" />
             </div>
 
-            <Button className="w-full " type="submit">Submit</Button>
-
-            {/* <Submitbutton /> */}
+            <SubmitButton />
             </form>
         </CardContent>
         </Card>

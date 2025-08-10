@@ -12,7 +12,11 @@ const nextConfig: NextConfig = {
         hostname: 'knutsoncasey.com',
         port: '',
       },
-
+      {
+        protocol: 'https',
+        hostname: 'www.berther-bueromoebel.ch',
+        port: '',
+      }
     ],
   },
 };
