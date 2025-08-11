@@ -3,7 +3,6 @@ import React from 'react'
 import { buttonVariants } from '../ui/button'
 import {RegisterLink, LoginLink, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import Image from 'next/image';
 
 const Navbar = async () => {
     const { getUser } = getKindeServerSession();
