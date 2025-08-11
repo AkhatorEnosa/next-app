@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 async function getPosts() {
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a delay for suspense
 
   const data = await prisma.blogPost.findMany({
     select: {
