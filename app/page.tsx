@@ -3,6 +3,8 @@ import { prisma } from "./utils/db";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
+export const revalidate = 360;
+
 async function getPosts() {
 
   const data = await prisma.blogPost.findMany({

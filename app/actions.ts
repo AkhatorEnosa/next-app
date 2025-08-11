@@ -3,6 +3,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { prisma } from "./utils/db";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 // This file contains server actions for handling form submissions or other server-side logic.
 
@@ -33,6 +34,8 @@ export async function handleSubmit(FormData: FormData) {
         authorImage: user.picture || "",
     },
   });
+
+  revalidatePath("/")
 
   return redirect("/dashboard");
 }
